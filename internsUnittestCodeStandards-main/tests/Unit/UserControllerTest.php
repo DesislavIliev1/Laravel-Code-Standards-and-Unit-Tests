@@ -53,13 +53,13 @@ class UserControllerTest extends TestCase
     {
 
       $this->withoutMiddleware();
-        // Creating a test car
+        // Creating a test user
         $user = User::factory()->create();
 
         // Making a DELETE request to the destroy method
         $response = $this->delete(route('adminuserdestroy', ['id' => $user->id]));
 
-        // Asserting that the car was deleted from the database
+        // Asserting that the user was deleted from the database
         $this->assertDatabaseMissing('users', ['id' => $user->id]);
 
         // Asserting a redirect to the expected route after deletion
