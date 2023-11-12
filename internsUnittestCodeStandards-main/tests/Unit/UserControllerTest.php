@@ -37,7 +37,7 @@ class UserControllerTest extends TestCase
       
         $response = $this->post(route('adminuserstore'), $request ->toArray());
          $response->assertStatus(400);
-        // $response->assertViewIs('cars.edit');
+        
         $this->assertDatabaseHas('users',[
           
             'name' => 'Mark',
@@ -60,7 +60,7 @@ class UserControllerTest extends TestCase
         $response = $this->delete(route('adminuserdestroy', ['id' => $user->id]));
 
         // Asserting that the car was deleted from the database
-        $this->assertDatabaseMissing('cars', ['id' => $user->id]);
+        $this->assertDatabaseMissing('users', ['id' => $user->id]);
 
         // Asserting a redirect to the expected route after deletion
         $response->assertRedirect(route('adminuserindex'));
